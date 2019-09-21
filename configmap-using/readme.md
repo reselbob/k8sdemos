@@ -10,4 +10,4 @@
 
 **Step 3:** Take a look at the outcome
 
-`kubectl exec -it pinger-test-container -- sh`
+`kubectl exec -it pinger-test-pod -- printenv`
