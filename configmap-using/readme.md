@@ -6,7 +6,7 @@
 
 **Step 2:** Apply it
 
-`kubectl apply -f manifests/dapi-test-pod.yaml`
+`kubectl apply -f manifests/pinger-test-pod.yaml`
 
 **Step 3:** Take a look at the outcome
 
