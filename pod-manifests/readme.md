@@ -7,7 +7,7 @@ For this lab use the Katacoda Kubernetes Playground found [here](https://katacod
 
 **Step 1:** Create a simple pod using a manifest file.
 
-`kubectl apply -f mannifests/simplepod.yaml`
+`kubectl apply -f manifests/simplepod.yaml`
 
 Take a look the results
 
@@ -15,7 +15,7 @@ Take a look the results
 
 **Step 2:** Create an [apache tomcat](https://tomcat.apache.org/) pod.
 
-`kubectl apply -f mannifests/tomcat-pod.yaml`
+`kubectl apply -f manifests/tomcat-pod.yaml`
 
 Take a look the results
 
