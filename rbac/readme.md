@@ -28,7 +28,7 @@ The purpose of this project is to demonstrate working with Kubernetes Roles Base
 
 **Step 7:**
 
-`kubectl config set-credentials employee --client-certificate=$HOME.certs/employee.crt  --client-key=$HOME/.certs/employee.key`
+`kubectl config set-credentials employee --client-certificate=$HOME/.certs/employee.crt  --client-key=$HOME/.certs/employee.key`
 
 **Step 8:**
 
