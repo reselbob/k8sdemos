@@ -10,4 +10,4 @@
 
 **Step 3:** Take a look at the outcome
 
-`kubectl exec -it test-container -- sh`
+`kubectl exec -it dpi-test-container -- sh`
