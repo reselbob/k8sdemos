@@ -24,7 +24,7 @@ The purpose of this project is to demonstrate working with Kubernetes Roles Base
 
 **Step 6:**
 
-`mkdir -p /home/ubuntu/.certs && mv employee.crt employee.key $HOME/.certs`
+`mkdir -p $HOME/.certs && mv employee.crt employee.key $HOME/.certs`
 
 **Step 7:**
 
