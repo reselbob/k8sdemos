@@ -29,4 +29,14 @@ Take a look the results
 
 `curl <POD_IP_ADDRESS>:8080`
 
+**Step 5:** Create a pod that has two containers.
+
+`kubectl apply -f manifests/tomcat-mysql-pod.yaml`
+
+**Step 6:** Let's take a look at the details of that pod
+
+`kubectl describe pod tomcat-mysql-pod`
+
+Things are more complex.
+
 
