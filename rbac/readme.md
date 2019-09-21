@@ -2,6 +2,8 @@
 
 The purpose of this project is to demonstrate working with Kubernetes Roles Basec Access Control.
 
+Make sure tha you are running with this director as `pwd`.
+
 **Step 1:** Create a `namespace` named `office`.
 
 `kubectl create namespace office`
@@ -38,26 +40,42 @@ The purpose of this project is to demonstrate working with Kubernetes Roles Base
 
 `kubectl --context=employee-context get pods`
 
-**Step 1:**
-
-`kubectl create -f manifests/role-deployment-manager.yaml`
+You'll error.
 
 **Step 10:**
 
-`kubectl create -f manifests/rolebinding-deployment-manager.yaml`
+Take a look at the contents of the manifest file that describes the Kubernetes role.
+
+`cat manifests/role-deployment-manager.yaml`
+
+Then execute: 
+
+`kubectl create -f manifests/role-deployment-manager.yaml`
 
 **Step 11:**
 
-`kubectl --context=employee-context get pods`
+Take a look at the contents of the manifest file that describes the Kubernetes rolebinding.
+
+`cat manifests/rolebinding-deployment-manager.yam`
+
+Then execute:
+
+`kubectl create -f manifests/rolebinding-deployment-manager.yaml`
 
 **Step 12:**
 
-`kubectl --context=employee-context run --image nginx acme-nginx`
+`kubectl --context=employee-context get pods`
 
 **Step 13:**
 
-`kubectl --context=employee-context get pods`
+`kubectl --context=employee-context run --image nginx acme-nginx`
 
 **Step 14:**
 
+`kubectl --context=employee-context get pods`
+
+**Step 15:**
+
 `kubectl --context=employee-context get pods --namespace=default`
+
+You'll error.
