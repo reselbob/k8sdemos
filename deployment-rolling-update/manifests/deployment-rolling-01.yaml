@@ -1,0 +1,26 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: replace-deployment
+spec:
+  replicas: 3
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 25%
+      maxUnavailable: 10%
+  template:
+    metadata:
+      labels:
+        type: example_code
+    spec:
+      containers:
+      - name: echocolor
+        image: reselbob/echocolor:v0.1
+        ports:
+        - containerPort: 3000
+        env:
+        - name: COLOR_ECHO_COLOR
+          value: RED
+        - name: COLOR_ECHO_VERSION
+          value: V1
