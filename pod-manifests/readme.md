@@ -41,6 +41,6 @@ Take a look the results
 
 `kubectl describe pod tomcat-mysql-pod`
 
-Things are more complex.
+Notice that the pod has two containers under a single IP address.
 
 
