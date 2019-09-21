@@ -5,6 +5,10 @@ manifests to create pods.
 
 For this lab use the Katacoda Kubernetes Playground found [here](https://katacoda.com/courses/kubernetes/playground).
 
+**Step 0:** Clone the repo:
+
+`git clone https://github.com/reselbob/k8sdemos.git`
+
 **Step 1:** Create a simple pod using a manifest file.
 
 `kubectl apply -f manifests/simplepod.yaml`
