@@ -1,0 +1,3 @@
+kubectl apply -f special-config.yaml
+
+kubectl apply -f dapi-test-pod.yaml

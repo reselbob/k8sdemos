@@ -1,0 +1,16 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: test-ingress
+spec:
+  rules:
+  -host: bar.foo.com
+   http: paths:
+      - path: /first
+        backend:
+          serviceName: firstservice
+          servicePort: 80
+      - path: /second
+        backend:
+          serviceName: secondservice
+          servicePort: 80

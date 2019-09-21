@@ -1,0 +1,27 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: deployment-blue
+spec:
+  replicas: 3
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 25%
+      maxUnavailable: 10%
+  template:
+    metadata:
+      labels:
+        type: example_code
+        color: blue
+    spec:
+      containers:
+      - name: echocolor
+        image: reselbob/echocolor:v0.1
+        ports:
+        - containerPort: 3000
+        env:
+        - name: COLOR_ECHO_COLOR
+          value: BLUE
+        - name: COLOR_ECHO_VERSION
+          value: V1
