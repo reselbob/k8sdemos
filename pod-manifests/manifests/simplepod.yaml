@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: pinger
+  labels:
+    pinger: demo
+spec:
+  containers:
+  - image: reselbob/pinger
+    name: pinger
+    ports:
+    - containerPort: 3000
