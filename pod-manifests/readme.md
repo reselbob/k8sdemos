@@ -1,6 +1,6 @@
 # Simple Pod Manifests
 
-The purpose of this project is to demonstrate on an introductory manner the use of Kubernetes
+The purpose of this project is to demonstrate in an introductory manner the use of Kubernetes
 manifests to create pods.
 
 For this lab use the Katacoda Kubernetes Playground found [here](https://katacoda.com/courses/kubernetes/playground).

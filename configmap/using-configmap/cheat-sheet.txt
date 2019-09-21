@@ -1,3 +1,13 @@
-kubectl apply -f special-config.yaml
+# Using a ConfigMap
 
-kubectl apply -f dapi-test-pod.yaml
+**Step 1:** Create the configmap
+
+`kubectl apply -f special-config.yaml`
+
+**Step 2:** Apply it
+
+`kubectl apply -f dapi-test-pod.yaml`
+
+**Step 3:** Take a look at the outcome
+
+`kubectl exec -it test-container -- sh`
