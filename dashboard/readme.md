@@ -27,7 +27,7 @@ and enter the port `8001`
 
 ![Enter port](images/enter-port.png)
 
-You'll a weird rendering. This is OK. Take notice fo the Katacoda URL in the web 
+You'll get a weird rendering of a list of filenames in the web page. This is OK. Take notice fo the Katacoda URL in the web 
 age.
 
 **Step 5:** Append the following to the Katacoda URL:
