@@ -26,5 +26,9 @@ kubectl create clusterrolebinding cluster-admin-dashboard-sa \
 `kubectl describe secret cluster-admin-dashboard-sa-token-tbd5r`
 
 **WHERE**
-* `cluster-admin-dashboard-sa-token-tbd5r` the secret retrieved by `kubectl get secret`
+* `cluster-admin-dashboard-sa-token-tbd5r` is the secret retrieved by `kubectl get secret`
+
+Or
+
+`kubectl -n kube-system describe secret $(kubectl -n kube-system get secret | grep admin-user | awk '{print $1}')`
 
