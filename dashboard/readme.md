@@ -19,7 +19,13 @@ dashboard.
 
 Save the token.
 
-**Step 4:** Open a web page using the Katacoda webpage access feature at port `8001`
+**Step 4:** Open a web page using the Katacoda webpage access feature ...
+
+![Select Web Access](images/select-web-access.png)
+
+and enter the port `8001`
+
+![Enter port](images/enter-port.png)
 
 You'll a weird rendering. This is OK. Take notice fo the Katacoda URL in the web 
 age.
@@ -38,6 +44,9 @@ For example:
 
 **Step 6:** Select the option `Token` in the Kubernetes Dashboard Login Page and appl the token you saved earlier.
 
+![Enter token](images/select-token.png)
 
 **Congratulations, you're in!!!!***
+
+![Dashboard](images/dashboard.png)
 
