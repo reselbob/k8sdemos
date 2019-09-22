@@ -42,6 +42,8 @@ For example:
 
 `https://2886795274-8001-cykoria01.environments.katacoda.com` is the specific Katacoda URL.
 
+Invoke the URL in the brower. This will take you to the Kubernetes Dashboard login page.
+
 **Step 6:** Select the option `Token` in the Kubernetes Dashboard Login Page and appl the token you saved earlier.
 
 ![Enter token](images/select-token.png)
