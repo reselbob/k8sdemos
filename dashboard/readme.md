@@ -26,7 +26,7 @@ age.
 
 **Step 5:** Append the following to the Katacoda URL:
 
-`api/v1/namespaces/kube-system/services/https:kubernetes-dashboard:/proxy/#!/overview?namespace=default`
+`/api/v1/namespaces/kube-system/services/https:kubernetes-dashboard:/proxy/#!/overview?namespace=default`
 
 For example:
 
