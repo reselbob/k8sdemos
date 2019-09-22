@@ -14,6 +14,7 @@ Doing this well tie up the terminal window.
 
 **Step 3:** In a **new terminal window** execute the get the access token you're going to need to login to the
 dashboard.
+
 `kubectl -n kube-system describe secret $(kubectl -n kube-system get secret | awk '/^deployment-controller-token-/{print $1}') | awk '$1=="token:"{print $2}'`
 
 Save the token.
