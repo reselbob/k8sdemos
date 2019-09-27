@@ -96,8 +96,7 @@ NODE_VERSION=8.9.4
 YARN_VERSION=1.3.2
 HOME=/root
 ```
-
- Your `HOME` directory won't necessarily be `/root`. And, the `KUBERNETES` will differ. The important thing to note is the
- existence of the environment variable, `SPECIAL_LEVEL_KEY=very`. `SPECIAL_LEVEL_KEY=very` is the value defined in the `ConfigMap`.
+Your `HOME` directory won't necessarily be `/root`. And, the `KUBERNETES` will differ. The important thing to note is the
+existence of the environment variable, `SPECIAL_LEVEL_KEY=very`. `SPECIAL_LEVEL_KEY=very` is the value defined in the `ConfigMap`.
  
  **Lab Complete!**
