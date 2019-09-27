@@ -96,11 +96,12 @@ leap_year_month=Februarymaster
 
 You will see output as follows:
 ```text
-
+minimum_temp=70
+maximum_temp=100master
 ```
 
 **Step 2:** Create a `ConfigMap` using the `--from-file` option to identify the exact file to use. In this case
-we'll be identifying two files, `payroll/calendar.properties` and  `weather/temparature.properties`.
+we'll be identifying two files, `payroll/calendar.properties` and  `weather/temperature.properties`.
 
 `kubectl create configmap administrivia --from-file=payroll/calendar.properties --from-file=weather/temparature.properties`
 
