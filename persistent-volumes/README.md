@@ -18,11 +18,9 @@
 
 `chmod 775 /mnt/data`
 
-`touch /mnt/data/hi.there`
+`echo "I am data" /mnt/data/hi.there`
 
-`ls /mnt/data`
-
-Exit minikube
+`cat /mnt/data/hi.there`
 
 `exit`
 
@@ -47,11 +45,9 @@ Exit minikube
 
 `curl localhost:8112`
 
+`exit`
+
 ## Check Activity in Storage
-
-SSH into minikube:
-
-`minikube ssh`
 
 Look at the file
 
