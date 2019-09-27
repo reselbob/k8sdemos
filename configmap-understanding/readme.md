@@ -122,23 +122,80 @@ we'll be identifying two files, `payroll/calendar.properties` and  `weather/temp
 
 You will see output similar to the following:
 ```text
-
+NAME            DATA   AGE
+administrivia   2      99s
+game-config     2      12m
 ```
 
-**Step 4:** Get a listing of all `ConfigMap` resources in the `default` namespace, but this time let's
-get the detailed view using the option `-o yaml`.
-
-`kubectl get configmap -o yaml -n default`
-
-
-
-You will see output as follows:
-
-**Step 3:** Let's take a look at the details of the, `ConfigMap`, `administrivia`.
+**Step 4:** Let's take a look at the details of the, `ConfigMap`, `administrivia`.
 
 `kubectl describe configmap administrivia`
 
 You will see output as follows:
+```yaml
+apiVersion: v1
+items:
+- apiVersion: v1
+  data:
+    calendar.properties: |-
+      first_day_of_week=Monday
+      leap_year_month=February
+    temperature.properties: |-
+      minimum_temp=70
+      maximum_temp=100
+  kind: ConfigMap
+  metadata:
+    creationTimestamp: "2019-09-27T05:28:56Z"
+    name: administrivia
+    namespace: default
+    resourceVersion: "14076"
+    selfLink: /api/v1/namespaces/default/configmaps/administrivia
+    uid: b3ba9cca-e0e7-11e9-94da-0242ac110008
+- apiVersion: v1
+  data:
+    game.properties: |-
+      enemies=aliens
+      lives=3
+      enemies.cheat=true
+      enemies.cheat.level=noGoodRotten
+      secret.code.passphrase=UUDDLRLRBABAS
+      secret.code.allowed=true
+      secret.code.lives=30
+    ui.properties: |-
+      color.good=purple
+      color.bad=yellow
+      allow.textmode=true
+      how.nice.to.look=fairlyNice
+  kind: ConfigMap
+  metadata:
+    creationTimestamp: "2019-09-27T05:18:12Z"
+    name: game-config
+    namespace: default
+    resourceVersion: "13048"
+    selfLink: /api/v1/namespaces/default/configmaps/game-config
+    uid: 33d1e36e-e0e6-11e9-94da-0242ac110008
+kind: List
+metadata:
+  resourceVersion: ""
+  selfLink: ""
+master $ kubectl describe configmap administrivia
+Name:         administrivia
+Namespace:    default
+Labels:       <none>
+Annotations:  <none>
+
+Data
+====
+calendar.properties:
+----
+first_day_of_week=Monday
+leap_year_month=February
+temperature.properties:
+----
+minimum_temp=70
+maximum_temp=100
+Events:  <none>
+```
 
 ## Creating a config map from a literal
 
@@ -157,8 +214,32 @@ In this scenario we're going to create the `ConfigMap` by declaring its informat
 
 **Step 2:** Let's take a look at the details of the, `ConfigMap`, `meal-preference`.
 
-`kubectl describe configmap meal-preference`
+`kubectl get configmap meal-preference -o yaml`
 
 You will see output as follows:
+```yaml
+apiVersion: v1
+data:
+  favorite.breakfast: eggs
+  favorite.dinner: pizza
+  favorite.lunch: salad
+kind: ConfigMap
+metadata:
+  creationTimestamp: "2019-09-27T05:37:27Z"
+  name: meal-preference
+  namespace: default
+  resourceVersion: "14877"
+  selfLink: /api/v1/namespaces/default/configmaps/meal-preference
+  uid: e4111ad0-e0e8-11e9-94da-0242ac110008
+```
+
+By doing this lab you've had the hands on experience create configmaps using the following techniques:
+
+* Creating a `ConfigMap` from using data in all files in a directory
+* Creating a `ConfigMap` from using data in all specific file
+* Creating a `ConfigMap` directly on the command line in an imperative manner
+
+
+And viewing the results
 
 **Lab Complete!**
