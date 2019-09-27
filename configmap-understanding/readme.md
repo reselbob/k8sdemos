@@ -88,10 +88,11 @@ metadata:
 
 You will see output as follows:
 ```text
-
+first_day_of_week=Monday
+leap_year_month=Februarymaster
 ```
 
-`cat weather/temparature.properties`
+`cat weather/temperature.properties`
 
 You will see output as follows:
 ```text
