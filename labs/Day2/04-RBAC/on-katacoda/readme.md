@@ -1,6 +1,16 @@
 # RBAC
 
-The purpose of this lab is to demonstrate working with Kubernetes Roles Basec Access Control.
+The purpose of this lab is to demonstrate working with Kubernetes Roles Based Access Control. (RBAC)
+
+In this lab you will:
+
+* Create a namespace that is special to  new user, `employee`
+* Create RSA key, certificate signing request (csr) and a RSA certificate
+* Create a new Kubernetes context with a new user
+* Create a Kubernetes `role` and `rolebinding`
+* Create a deployment in the new namespace, `office`
+* Try get pods in a namespace to which the user has permission to access
+* Try to get pods in a namespace to which the user does not have permission to access 
 
 **Step 1:** Create a `namespace` named `office`.
 
@@ -153,7 +163,7 @@ You'll get output like so:
 
 `No resources found.`
 
-This is good news because although there happen to be on pods, created you are not being denied permission
+This is good news because although there happens to be no pods found you are not being denied permission
 to view pods. Earlier on you were.
 
 
@@ -196,4 +206,16 @@ You'll error  like so:
 `Error from server (Forbidden): pods is forbidden: User "employee" cannot list resource "pods" in API group "" in the namespace "default"`
 
 Why? Because the user `employee` does not have permission to view pods in the `default` namespace.
+
+**Congratulations!** You've:
+
+* Created a namespace that is special to  new user, `employee`
+* Created RSA key, certificate signing request (csr) and a RSA certificate
+* Created a new Kubernetes context with a new user
+* Created a Kubernetes `role` and `rolebinding`
+* Created a deployment in the new namespace, `office`
+* Tried get pods in a namespace to which the user has permission to access
+* Tried to get pods in a namespace to which the user does not have permission to access
+
+**Lab Complete**
 
