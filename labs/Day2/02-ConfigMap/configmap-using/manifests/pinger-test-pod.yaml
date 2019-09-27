@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: pinger-test-pod
+spec:
+  containers:
+    - name: test-container
+      image: reselbob/pinger
+      env:
+        - name: SPECIAL_LEVEL_KEY
+          valueFrom:
+            configMapKeyRef:
+              name: special-config
+              key: special.how
+  restartPolicy: Never
