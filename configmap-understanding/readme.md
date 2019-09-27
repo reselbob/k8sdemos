@@ -27,8 +27,8 @@ secret.code.passphrase=UUDDLRLRBABAS
 secret.code.allowed=true
 secret.code.lives=30
 ```
-
 `cat game-configs/ui.properties`
+
 
 You will see output as follows:
 
@@ -39,7 +39,6 @@ allow.textmode=true
 how.nice.to.look=fairlyNice
 ```
 Keep the contents of each of these files in mind.
-
 
 **Step 2:** Create a `ConfigMap` by entering the following command at the command line:
 
@@ -56,16 +55,50 @@ are in the directory, `game-configs`.
 `kubectl get configmap game-config -o yaml`
 
 You will see output as follows:
-
-**Step 4:** Let's take a look at the details of the, `ConfigMap`, `game-config`.
-
-`kubectl describe configmaps game-config`
-
-You will see output as follows:
-
+```yaml
+apiVersion: v1
+data:
+  game.properties: |-
+    enemies=aliens
+    lives=3
+    enemies.cheat=true
+    enemies.cheat.level=noGoodRotten
+    secret.code.passphrase=UUDDLRLRBABAS
+    secret.code.allowed=true
+    secret.code.lives=30
+  ui.properties: |-
+    color.good=purple
+    color.bad=yellow
+    allow.textmode=true
+    how.nice.to.look=fairlyNice
+kind: ConfigMap
+metadata:
+  creationTimestamp: "2019-09-27T05:18:12Z"
+  name: game-config
+  namespace: default
+  resourceVersion: "13048"
+  selfLink: /api/v1/namespaces/default/configmaps/game-config
+  uid: 33d1e36e-e0e6-11e9-94da-0242ac110008
+```
 ## Creating a config map from particular files
 
-**Step 1:** Create a `ConfigMap` using the `--from-file` option to identify the exact file to use. In this case
+**Step 1:** Let's tale a look at the two files of interest.
+
+`cat payroll/calendar.properties`
+
+You will see output as follows:
+```text
+
+```
+
+`cat weather/temparature.properties`
+
+You will see output as follows:
+```text
+
+```
+
+**Step 2:** Create a `ConfigMap` using the `--from-file` option to identify the exact file to use. In this case
 we'll be identifying two files, `payroll/calendar.properties` and  `weather/temparature.properties`.
 
 `kubectl create configmap administrivia --from-file=payroll/calendar.properties --from-file=weather/temparature.properties`
@@ -76,7 +109,7 @@ we'll be identifying two files, `payroll/calendar.properties` and  `weather/temp
 * `--from-file=payroll/calendar.properties` indicates the first file that has data from the `ConfigMap`
 * `--from-file=weather/temparature.properties` indicates the second file that has data from the `ConfigMap`
 
-**Step 2:** Get a listing of all `ConfigMap` resources in the `default` namespace.
+**Step 3:** Get a listing of all `ConfigMap` resources in the `default` namespace.
 
 `kubectl get configmap -o yaml --ns default`
 
@@ -84,7 +117,7 @@ we'll be identifying two files, `payroll/calendar.properties` and  `weather/temp
 
 * `kubectl get configmap` is the command set to get the a configmap
 * `-o yaml` is the option that indicates to show the output as yaml
-* `-ns` is the option that indicates to get configmaps in the namespace, `default`
+* `-ns` is the option that indicates to get the configmaps in the namespace, `default`
 
 You will see output as follows:
 
