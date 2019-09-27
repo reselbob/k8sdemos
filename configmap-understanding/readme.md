@@ -28,7 +28,7 @@ secret.code.allowed=true
 secret.code.lives=30
 ```
 
-`cat game-configs/uui.properties`
+`cat game-configs/ui.properties`
 
 You will see output as follows:
 
