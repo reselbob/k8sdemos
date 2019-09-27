@@ -14,7 +14,7 @@ stored in a particular directory.
 **Step 1:** Take a look at the contents of the files, `game-config/game.properties` and
 `game-config/ui.properties`
 
-`cat game-config/game.properties`
+`cat game-configs/game.properties`
 
 You will see output as follows:
 
@@ -28,7 +28,7 @@ secret.code.allowed=true
 secret.code.lives=30
 ```
 
-`cat game-config/uui.properties`
+`cat game-configs/uui.properties`
 
 You will see output as follows:
 
