@@ -48,7 +48,8 @@ spec:
               key: special.how
   restartPolicy: Never
 ```
-Notice that the attribute, `env:` in the container `spec` references the configmap to get value for the environment variable,
+Notice that the attribute, `env:` in the container `spec` references the configmap that will be used
+to get value for the environment variable,
 `SPECIAL_LEVEL_KEY`, like so:
 
 ```yaml
@@ -61,7 +62,7 @@ env:
 ```
 
 
-**Step 4:** Now let create the pod that uses the configmap in a declarative manner using the manifest file:
+**Step 4:** Now let's create the pod that uses the configmap in a declarative manner using the manifest file:
 
 `kubectl apply -f manifests/pinger-test-pod.yaml`
 
