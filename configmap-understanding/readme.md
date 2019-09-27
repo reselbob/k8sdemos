@@ -103,13 +103,13 @@ maximum_temp=100master
 **Step 2:** Create a `ConfigMap` using the `--from-file` option to identify the exact file to use. In this case
 we'll be identifying two files, `payroll/calendar.properties` and  `weather/temperature.properties`.
 
-`kubectl create configmap administrivia --from-file=payroll/calendar.properties --from-file=weather/temparature.properties`
+`kubectl create configmap administrivia --from-file=payroll/calendar.properties --from-file=weather/temperature.properties`
 
 **WHERE**
 
 * `kubectl create configmap administrivia` is the command set to create a `ConfigMap` named, `administrivia`.
 * `--from-file=payroll/calendar.properties` indicates the first file that has data from the `ConfigMap`
-* `--from-file=weather/temparature.properties` indicates the second file that has data from the `ConfigMap`
+* `--from-file=weather/temperature.properties` indicates the second file that has data from the `ConfigMap`
 
 **Step 3:** Get a listing of all `ConfigMap` resources in the `default` namespace.
 
