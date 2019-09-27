@@ -113,13 +113,24 @@ we'll be identifying two files, `payroll/calendar.properties` and  `weather/temp
 
 **Step 3:** Get a listing of all `ConfigMap` resources in the `default` namespace.
 
-`kubectl get configmap -o yaml --ns default`
+`kubectl get configmap -n default`
 
 **WHERE**
 
 * `kubectl get configmap` is the command set to get the a configmap
-* `-o yaml` is the option that indicates to show the output as yaml
-* `-ns` is the option that indicates to get the configmaps in the namespace, `default`
+* `-n` is the option that indicates to get the configmaps in the namespace, `default`
+
+You will see output similar to the following:
+```text
+
+```
+
+**Step 4:** Get a listing of all `ConfigMap` resources in the `default` namespace, but this time let's
+get the detailed view using the option `-o yaml`.
+
+`kubectl get configmap -o yaml -n default`
+
+
 
 You will see output as follows:
 
