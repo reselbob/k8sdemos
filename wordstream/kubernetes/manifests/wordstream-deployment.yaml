@@ -20,13 +20,13 @@ spec:
         image: localhost:5000/wordstream-producer
         ports:
         - containerPort: 3000
-    env:
-      - name: REDIS_HOST
-        value: "redis-master"
-      - name: REDIS_PORT
-        value: "6379"
-      - name: REDIS_PWD
-        value: "none"
+        env:
+          - name: REDIS_HOST
+            value: "redis-master"
+          - name: REDIS_PORT
+            value: "6379"
+          - name: REDIS_PWD
+            value: "none"
 ---
 apiVersion: extensions/v1beta1
 kind: Deployment
