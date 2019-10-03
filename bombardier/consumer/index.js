@@ -13,16 +13,21 @@ const streamName = process.env.BOMBARDIER_STREAM_NAME || 'BOMBARDIER';
 const streamGroup = process.env.BOMBARDIER_CONSUMER_GROUP || 'BOMBARDIER_GROUP';
 
 console.log(`Spinning up consumer ${consumerId} for stream ${streamName}`);
+client.xgroup('CREATE', streamName, streamGroup, '$', function (err) {
+    if (err) {
+        console.error(`The group ${streamGroup} exists.`);
+    }
+    const timeout = setInterval(function () {
+        client.xreadgroup('GROUP', streamGroup, consumerId, 'BLOCK', 1000, 'COUNT', 1, 'NOACK',
+            'STREAMS', streamName, '>', function (err, stream) {
+                if (err) {
+                    return console.error(err);
+                }
+                console.log(JSON.stringify({consumerId, stream}));
+            });
 
-const timeout = setInterval(function () {
-    client.xreadgroup('GROUP', streamGroup, consumerId, 'BLOCK', 1000, 'COUNT', 1, 'NOACK',
-        'STREAMS', streamName, '>', function (err, stream) {
-            if (err) {
-                return console.error(err);
-            }
-            console.log(JSON.stringify({consumerId, stream}));
-        });
+    }, 1000);
+});
 
-}, 1000);
 
 
