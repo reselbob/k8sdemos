@@ -5,7 +5,7 @@ for filename in ./manifests/redis/*-deployment.yaml; do
     kubectl apply -f "$filename"
 done
 
-for filename in ./manifests/*-pod.yaml; do
+for filename in ./manifests/*-deployment.yaml; do
     kubectl apply -f "$filename"
 done
 
