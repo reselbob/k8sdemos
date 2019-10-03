@@ -9,7 +9,7 @@ docker build -t wordstream-producer . -f Dockerfile_producer
 
 docker tag  wordstream-producer  localhost:5000/wordstream-producer
 
-docker push localhost:5000/wordstream-producerr
+docker push localhost:5000/wordstream-producer
 
 #Create the wordstream consumer container image
 
