@@ -8,8 +8,8 @@ const redis = require('redis');
 const uuidv4 = require('uuid/v4');
 const consumerId = uuidv4();
 
-const streamName = process.env.BOMBARDIER_STREAM_NAME || 'BOMBARDIER';
-const streamGroup = process.env.BOMBARDIER_CONSUMER_GROUP || 'BOMBARDIER_GROUP';
+const streamName = process.env.WORDSTREAM_STREAM_NAME || 'WORDSTREAM';
+const streamGroup = process.env.WORDSTREAM_CONSUMER_GROUP || 'WORDSTREAM_GROUP';
 
 process.env.REDIS_PORT = process.env.REDIS_PORT || 6379; //yeah, it's a hack
 process.env.REDIS_HOST = process.env.REDIS_HOST || 'localhost'; //yeah, it's a hack

@@ -1,0 +1,32 @@
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: wordstream-producer
+  labels:
+    app: wordstream-producer
+spec:
+  selector:
+    app: wordstream-producer
+  ports:
+  -
+    protocol: TCP
+    port: 8001
+    targetPort: 3000
+  type: NodePort
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: wordstream-consumer
+  labels:
+    app: wordstream-consumer
+spec:
+  selector:
+    app: wordstream-consumer
+  ports:
+    -
+      protocol: TCP
+      port: 8001
+      targetPort: 3000

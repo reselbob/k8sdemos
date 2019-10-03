@@ -1,6 +1,7 @@
 FROM node:8.9-alpine
+EXPOSE 3000
 WORKDIR /app
 COPY package.json /app
 RUN npm install --only-production
-COPY consumer/index.js /app
+COPY producer/index.js /app
 CMD ["node", "/app/index.js"]
