@@ -17,26 +17,11 @@ process.env.REDIS_PWD = process.env.REDIS_PWD || 'none'; //yeah, it's a hack;
 
 const url = {url: `//${process.env.REDIS_HOST}:${process.env.REDIS_PORT}`};
 
-const winston = require('winston');
-const logger = winston.createLogger({
-    level: 'info',
-    format: winston.format.json(),
-    defaultMeta: { service: 'wordstream-consumer' },
-    transports: [
-        //
-        // - Write to all logs with level `info` and below to `combined.log`
-        // - Write all logs error (and below) to `error.log`.
-        //
-        new winston.transports.File({ filename: 'error.log', level: 'error' }),
-        new winston.transports.File({ filename: 'combined.log' })
-    ]
-});
-
 const client = redis.createClient(url);
-logger.info(`Spinning up consumer ${consumerId} for stream ${streamName} at ${new Date()}`);
+console.log(`Spinning up consumer ${consumerId} for stream ${streamName} at ${new Date()}`);
 client.xgroup('CREATE', streamName, streamGroup, '$', function (err) {
     if (err) {
-        logger.error(`The group ${streamGroup} exists.`);
+        console.error(`The group ${streamGroup} exists.`);
     }
     const timeout = setInterval(function () {
         client.xreadgroup('GROUP', streamGroup, consumerId, 'BLOCK', 1000, 'COUNT', 1, 'NOACK',
@@ -44,7 +29,7 @@ client.xgroup('CREATE', streamName, streamGroup, '$', function (err) {
                 if (err) {
                     return console.error(err);
                 }
-                logger.info(JSON.stringify({consumerId, stream}));
+                console.log(JSON.stringify({consumerId, stream}));
             });
 
     }, 1000);
