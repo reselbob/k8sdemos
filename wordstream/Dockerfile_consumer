@@ -1,5 +1,4 @@
 FROM node:8.9-alpine
-RUN npm install forever -g
 EXPOSE 3000
 WORKDIR /app
 COPY package.json /app
