@@ -25,16 +25,22 @@ async.forever(
     function (next) {
         const fieldName = 'Word';
         const str = `${faker.random.words(1)} : ${new Date()}`;
-        producer.xadd(streamName, '*', fieldName, str, function (err) {
-            console.log(`Producer ${id} is adding message: ${str} to field: ${fieldName} at stream: ${streamName}`);
-            next();
-        }),
-            function (err) {
-                if (!err.message.includes('BUSYGROUP')) {
-                    err.isShuttingDown = true;
-                    console.error(err.message);
-                    process.exit(9)
-                }
-            };
-    });
+        producer.xgroup('CREATE', streamName, streamGroup, '$', function (err) {
+            if (err && !err.message.includes('BUSYGROUP') && !err.message.includes('ERR The XGROUP subcommand requires the key to exist')) {
+                console.error(err.message);
+            }
+            producer.xadd(streamName, '*', fieldName, str, function (err) {
+                console.log(`Producer ${id} is adding message: ${str} to field: ${fieldName} at stream: ${streamName}`);
+                next();
+            })
+        })
+    },
+    function (err) {
+        if (!err.message.includes('BUSYGROUP')) {
+            err.isShuttingDown = true;
+            console.error(err.message);
+            process.exit(9)
+        }
+    }
+);
 

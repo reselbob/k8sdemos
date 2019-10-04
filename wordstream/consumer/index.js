@@ -23,6 +23,9 @@ console.log(`Spinning up consumer ${consumerId} for stream ${streamName} at ${ne
 async.forever(
     function (next) {
         client.xgroup('CREATE', streamName, streamGroup, '$', function (err) {
+            if (!err.message.includes('BUSYGROUP')) {
+                console.error(err.message);
+            }
             client.xreadgroup('GROUP', streamGroup, consumerId, 'BLOCK', 1000, 'COUNT', 1, 'NOACK',
                 'STREAMS', streamName, '>', function (err, stream) {
                     if (err) {
