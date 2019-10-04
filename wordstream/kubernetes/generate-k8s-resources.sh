@@ -21,4 +21,4 @@ for filename in ./manifests/*-service.yaml; do
 done
 
 sleep 5
-kubectl  logs -l app=wordstream-consumer -f
+kubectl  logs -l type=consumer -f
