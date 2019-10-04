@@ -90,8 +90,7 @@ You'll get output similar to the following:
 {"consumerId":"7c2b0f82-4024-4f24-8f4c-9247f29aaa7c","stream":[["WORDSTREAM",[["1570169463229-0",["Word","Dynamic : Fri Oct 04 2019 06:11:03 GMT+0000 (UTC)"]]]]]}
 {"consumerId":"1d013e17-7eda-4d2e-8deb-6e6d94c5bb7a","stream":null}
 ```
-Notie that in this case there are three UUIDs in play that reflect the id of each consumer. As you
-can see there are three consumers running:
+Notice that in this case there are three UUIDs in play that reflect the id of each consumer.
 
 * `1d013e17-7eda-4d2e-8deb-6e6d94c5bb7a`
 * `7c2b0f82-4024-4f24-8f4c-9247f29aaa7c`
