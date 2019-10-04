@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
-
-#Create the local repo
+#This  seeding script  is to be run on a MiniKube environment ONLY. It will not work in a standard
+#Kubernetes cluster
 docker run -d -p 5000:5000 --restart=always --name registry registry:2
 
 #Create the wordstream producer container image
@@ -22,3 +22,5 @@ docker push localhost:5000/wordstream-consumer
 #List the images in the registry
 
 curl http://localhost:5000/v2/_catalog
+
+

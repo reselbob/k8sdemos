@@ -13,7 +13,6 @@ spec:
     protocol: TCP
     port: 8001
     targetPort: 3000
-  type: NodePort
 
 ---
 apiVersion: v1

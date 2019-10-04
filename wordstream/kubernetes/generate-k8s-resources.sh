@@ -19,3 +19,6 @@ done
 for filename in ./manifests/*-service.yaml; do
     kubectl apply -f "$filename"
 done
+
+sleep 5
+kubectl  logs -l app=wordstream-consumer -f
