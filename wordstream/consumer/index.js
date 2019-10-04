@@ -15,9 +15,9 @@ process.env.REDIS_PORT = process.env.REDIS_PORT || 6379; //yeah, it's a hack
 process.env.REDIS_HOST = process.env.REDIS_HOST || 'localhost'; //yeah, it's a hack
 process.env.REDIS_PWD = process.env.REDIS_PWD || 'none'; //yeah, it's a hack;
 
-const url = {url: `//${process.env.REDIS_HOST}:${process.env.REDIS_PORT}`};
-
-const client = redis.createClient(url);
+//const url = {url: `//${process.env.REDIS_HOST}:${process.env.REDIS_PORT}`};
+const client = redis.createClient(process.env.REDIS_PORT,process.env.REDIS_HOST);
+//const client = redis.createClient(url);
 console.log(`Spinning up consumer ${consumerId} for stream ${streamName} at ${new Date()}`);
 client.xgroup('CREATE', streamName, streamGroup, '$', function (err) {
     if (err) {

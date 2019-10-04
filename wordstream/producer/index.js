@@ -9,8 +9,9 @@ process.env.REDIS_PORT = process.env.REDIS_PORT || 6379; //yeah, it's a hack
 process.env.REDIS_HOST = process.env.REDIS_HOST || 'localhost'; //yeah, it's a hack
 process.env.REDIS_PWD = process.env.REDIS_PWD || 'none'; //yeah, it's a hack;
 
-const url = {url: `//${process.env.REDIS_HOST}:${process.env.REDIS_PORT}`};
-const producer = redis.createClient(url);
+//const url = {url: `//${process.env.REDIS_HOST}:${process.env.REDIS_PORT}`};
+const producer = redis.createClient(process.env.REDIS_PORT,process.env.REDIS_HOST);
+
 /*
 To get docker up and running in an environment in which Docker is installed:
 
