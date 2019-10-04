@@ -22,4 +22,3 @@ done
 
 sleep 5
 
-kubectl  logs -l app=wordstream-consumer -f
