@@ -13,6 +13,7 @@
   "author": "Bob Reselman <reselbob@gmail.com>",
   "license": "MIT",
   "dependencies": {
+    "async": "^3.1.0",
     "faker": "^4.1.0",
     "redis": "^2.8.0",
     "redis-commands": "^1.5.0",
