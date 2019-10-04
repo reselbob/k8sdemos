@@ -42,7 +42,7 @@ spec:
   template:
     metadata:
       labels:
-        app:  wordstream-consumer
+        app: wordstream-consumer
     spec:
       containers:
         - name: wordstream-consumer
