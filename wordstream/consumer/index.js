@@ -19,11 +19,14 @@ process.env.REDIS_PWD = process.env.REDIS_PWD || 'none'; //yeah, it's a hack;
 const client = redis.createClient(process.env.REDIS_PORT,process.env.REDIS_HOST);
 //const client = redis.createClient(url);
 console.log(`Spinning up consumer ${consumerId} for stream ${streamName} at ${new Date()}`);
-client.xgroup('CREATE', streamName, streamGroup, '$', function (err) {
-    if (err) {
-        console.error(`The group ${streamGroup} exists.`);
-    }
-    const timeout = setInterval(function () {
+
+const timeout = setInterval(function () {
+    client.xgroup('CREATE', streamName, streamGroup, '$', function (err) {
+        if (err) {
+           if(!err.message.includes('BUSYGROUP')){
+               console.error(err.message)
+           }
+        }
         client.xreadgroup('GROUP', streamGroup, consumerId, 'BLOCK', 1000, 'COUNT', 1, 'NOACK',
             'STREAMS', streamName, '>', function (err, stream) {
                 if (err) {
@@ -31,9 +34,6 @@ client.xgroup('CREATE', streamName, streamGroup, '$', function (err) {
                 }
                 console.log(JSON.stringify({consumerId, stream}));
             });
-
-    }, 1000);
-});
-
-
+    });
+}, 1000);
 
