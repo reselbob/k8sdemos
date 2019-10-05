@@ -28,9 +28,9 @@ spec:
           - name: REDIS_PWD
             value: "none"
       initContainers:
-        - name: init-myservice
-          image: busybox:1.31
-          command: ['sh', '-c', 'until nslookup redis-master; do echo waiting for redis-master; sleep 2; done;']
+      - name: init-myservice
+        image: busybox:1.31
+        command: ['sh', '-c', 'until nslookup redis-master; do echo waiting for redis-master; sleep 2; done;']
 ---
 apiVersion: extensions/v1beta1
 kind: Deployment
@@ -60,10 +60,10 @@ spec:
               value: "6379"
             - name: REDIS_PWD
               value: "none"
-        initContainers:
-          - name: init-myservice
-            image: busybox:1.31
-            command: ['sh', '-c', 'until nslookup redis-master; do echo waiting for redis-master; sleep 2; done;']
-          - name: init-mydb
-            image: busybox:1.31
-            command: ['sh', '-c', 'until nslookup wordstream-consumer; do echo wordstream-consumer for mydb; sleep 2; done;']
+      initContainers:
+        - name: init-myservice
+          image: busybox:1.31
+          command: ['sh', '-c', 'until nslookup redis-master; do echo waiting for redis-master; sleep 2; done;']
+        - name: init-mydb
+          image: busybox:1.31
+          command: ['sh', '-c', 'until nslookup wordstream-consumer; do echo wordstream-consumer for mydb; sleep 2; done;']
