@@ -23,7 +23,7 @@ console.log(`Spinning up consumer ${consumerId} for stream ${streamName} at ${ne
 const timeout = setInterval(function () {
     client.xgroup('CREATE', streamName, streamGroup, '$', function (err) {
         if (err) {
-            if(!err.message.includes('BUSYGROUP')){
+            if(err && !err.message.includes('BUSYGROUP')){
                 console.error(err.message)
             }
         }
@@ -35,4 +35,4 @@ const timeout = setInterval(function () {
                 console.log(JSON.stringify({consumerId, stream}));
             });
     });
-}, 250);
+}, );

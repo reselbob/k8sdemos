@@ -54,6 +54,10 @@ to "warm up".)
 
 `kubectl get pods`
 
+(Please be advised there are `init containers` in force for the deployment of `wordstream-producer` and
+`wordstream-consumer`. Thus, when you execute, `kubectl get pods` you might see output indicating
+the the pod is initializing.)
+
 You'll get output similar to the following:
 
 ```text
