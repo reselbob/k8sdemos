@@ -5,6 +5,7 @@ docker run -d --name redis-master -p 6379:6379 redis
 
  */
 const redis = require('redis');
+const async = require('async');
 const uuidv4 = require('uuid/v4');
 const consumerId = uuidv4();
 
@@ -20,19 +21,29 @@ const client = redis.createClient(process.env.REDIS_PORT,process.env.REDIS_HOST)
 //const client = redis.createClient(url);
 console.log(`Spinning up consumer ${consumerId} for stream ${streamName} at ${new Date()}`);
 
-const timeout = setInterval(function () {
-    client.xgroup('CREATE', streamName, streamGroup, '$', function (err) {
-        if (err) {
-            if(err && !err.message.includes('BUSYGROUP')){
-                console.error(err.message)
-            }
-        }
-        client.xreadgroup('GROUP', streamGroup, consumerId, 'BLOCK', 1000, 'COUNT', 1, 'NOACK',
-            'STREAMS', streamName, '>', function (err, stream) {
-                if (err) {
-                    return console.error(err);
+async.forever(
+    function (next) {
+        client.xgroup('CREATE', streamName, streamGroup, '$', function (err) {
+            if (err) {
+                if(err && !err.message.includes('BUSYGROUP')){
+                    console.error(err.message)
                 }
-                console.log(JSON.stringify({consumerId, stream}));
-            });
-    });
-}, );
+            }
+            client.xreadgroup('GROUP', streamGroup, consumerId, 'BLOCK', 1000, 'COUNT', 1, 'NOACK',
+                'STREAMS', streamName, '>', function (err, stream) {
+                    if (err) {
+                        return console.error(err);
+                    }
+                    console.log(JSON.stringify({consumerId, stream}));
+                    next();
+                });
+        });
+    },
+    function (err) {
+        if (!err.message.includes('BUSYGROUP')) {
+            err.isShuttingDown = true;
+            console.error(err.message);
+            process.exit(9)
+        }
+    }
+);
