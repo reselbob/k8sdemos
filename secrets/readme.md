@@ -37,9 +37,9 @@ Notice that the secret defines two key-value pairs.
   username: YWRtaW4=
   password: MWYyZDFlMmU2N2Rmmaster
 ```
-These values assigned to the keys are Base64 encoded. In steps that follow we're going to assign values to 
+The values assigned to the keys are [Base64 encoded](https://en.wikipedia.org/wiki/Base64) . In steps that follow we're going to assign values to 
 particular environment variables in a pod's containers using the secret. Kubernetes
-has the "smarts" to  decode the [Base64 encoded](https://en.wikipedia.org/wiki/Base64) values 
+has the "smarts" to  decode the Base64 encoded values 
 automatically upon usage. (You'll see the the decoding take place below in Step 9.)
 
 **Step 5:** Apply the secret that's described in the manifest file:
@@ -51,7 +51,7 @@ You'll get output similar to the following:
 `secret/mysecret created`
 
 **Step 6:** Take a look at the manifest file that describes the pod that will
-use the secrets
+use the secret.
 
 `cat manifests/secret-pod.yaml`
 
@@ -101,8 +101,8 @@ NAME             READY   STATUS    RESTARTS   AGE
 secret-env-pod   1/1     Running   0          47s
 ```
 
-**Step 9:** See if the secret "stuck" by using the command set, `kubectl exec` to list the values
-in the pod's container.
+**Step 9:** See if the secret "stuck" by using the command set, `kubectl exec` to list the environment
+variables assigned to ßthe pod's container.
 
 `kubectl exec -it secret-env-pod -- printenv`
 
