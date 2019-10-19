@@ -37,7 +37,7 @@ Notice that the secret defines two key-value pairs.
   username: YWRtaW4=
   password: MWYyZDFlMmU2N2Rmmaster
 ```
-The values assigned to the keys are [Base64 encoded](https://en.wikipedia.org/wiki/Base64) . In steps that follow we're going to assign values to 
+The values assigned to the keys are [Base64 encoded](https://en.wikipedia.org/wiki/Base64). In steps that follow we're going to assign values to 
 particular environment variables in a pod's containers using the secret. Kubernetes
 has the "smarts" to  decode the Base64 encoded values 
 automatically upon usage. (You'll see the the decoding take place below in Step 9.)
