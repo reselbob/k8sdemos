@@ -38,8 +38,8 @@ Notice that the secret defines two key-value pairs.
   password: MWYyZDFlMmU2N2Rmmaster
 ```
 The values assigned to the keys are [Base64 encoded](https://en.wikipedia.org/wiki/Base64). In steps that follow we're going to assign values to 
-particular environment variables in a pod's containers using the secret. Kubernetes
-has the "smarts" to  decode the Base64 encoded values 
+particular environment variables in a pod's container using the secret. Kubernetes
+has the "smarts" to  decode the Base64 encoded values in the secret
 automatically upon usage. (You'll see the the decoding take place below in Step 9.)
 
 **Step 5:** Apply the secret that's described in the manifest file:
