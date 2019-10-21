@@ -1,0 +1,47 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: frontend-prod
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: frontend
+        version: prod
+    spec:
+      containers:
+      - name: frontend
+        image: reselbob/istiocode:v0.1
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 3000
+        env:
+        - name: SERVICE_NAME
+          value: "frontend-prod"
+        - name: UPSTREAM_URI
+          value: "http://business/"
+---
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: business-prod
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: business
+        version: prod
+    spec:
+      containers:
+      - name: business
+        image: reselbob/istiocode:v0.1
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 3000
+        env:
+        - name: SERVICE_NAME
+          value: "business-prod"
+        - name: UPSTREAM_URI
+          value: "http://worldclockapi.com/api/json/utc/now"
