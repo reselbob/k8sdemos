@@ -96,13 +96,13 @@ Windows users follow the process described here **[here](https://www.addictiveti
 
 **Step 9:** Take a look
 
-`curl http://moe.info`
+`curl http://moe.info | grep STOOGE`
 
-`curl http://stooges.info/moe`
+`curl http://stooges.info/moe | grep STOOGE`
 
-`curl http://stooges.info/larry`
+`curl http://stooges.info/larry | grep STOOGE`
 
-`curl http://stooges.info/curly`
+`curl http://stooges.info/curly | grep STOOGE`
 
 ## Clean Up
 
