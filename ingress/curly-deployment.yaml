@@ -1,0 +1,26 @@
+---
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: curly
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: curly
+  template:
+    metadata:
+      labels:
+        app: curly
+    spec:
+      containers:
+        - image: "reselbob/pinger:v2.1"
+          imagePullPolicy: Always
+          name: curly
+          env:
+          - name: CURRENT_VERSION
+            value: LESSON_10
+          - name: STOOGE
+            value: "I am Curly"
+          ports:
+            - containerPort: 3000

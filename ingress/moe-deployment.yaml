@@ -1,0 +1,26 @@
+---
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: moe
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: moe
+  template:
+    metadata:
+      labels:
+        app: moe
+    spec:
+      containers:
+        - image: "reselbob/pinger:v2.1"
+          imagePullPolicy: Always
+          name: moe
+          env:
+          - name: CURRENT_VERSION
+            value: LESSON_10
+          - name: STOOGE
+            value: "I am Moe"
+          ports:
+            - containerPort: 3000

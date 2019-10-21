@@ -1,0 +1,26 @@
+---
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: larry
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: larry
+  template:
+    metadata:
+      labels:
+        app: larry
+    spec:
+      containers:
+        - image: "reselbob/pinger:v2.1"
+          imagePullPolicy: Always
+          name: larry
+          env:
+          - name: CURRENT_VERSION
+            value: LESSON_10
+          - name: STOOGE
+            value: "I am Larry"
+          ports:
+            - containerPort: 3000
