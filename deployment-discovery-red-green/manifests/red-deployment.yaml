@@ -1,0 +1,26 @@
+---
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: echocolor-red
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: echocolor
+      color: red
+  template:
+    metadata:
+      labels:
+        app: echocolor
+        color: red
+    spec:
+      containers:
+        - name: echocolor-red
+          image: reselbob/echocolor:v0.1
+          ports:
+            -
+              containerPort: 3000
+          env:
+            - name: COLOR_ECHO_COLOR
+              value: RED

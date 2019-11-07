@@ -1,0 +1,11 @@
+{
+  "name": "echocolor",
+  "version": "0.0.1",
+  "description": "A simple web server that reports color based on the environment variable, COLOR_ECHO_COLOR",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "reselbob@gmail.com",
+  "license": "ISC"
+}

@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: echocolor
+spec:
+  selector:
+    app: echocolor
+    color: red
+  ports:
+  -
+    protocol: TCP
+    port: 3000
+    targetPort: 3000
+  type: NodePort
