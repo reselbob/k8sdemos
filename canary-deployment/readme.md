@@ -152,7 +152,7 @@ deployment-red-76fccf6fd7-zw5lz   1/1     Running   0          14m
 ```
 The output makes sense because we're asking for pods that **only** have the labels, `type=example_code` and `color=red`.
 
-**Step 8:** Let's retrieve only the pods that have both the labels, `type=example_code` and `color=green`.
+**Step 9:** Let's retrieve only the pods that have both the labels, `type=example_code` and `color=green`.
 
 `kubectl get pods -l type=example_code  -l color=green`
 
@@ -166,7 +166,7 @@ deployment-green-84887f8cf5-lqlwz   1/1     Running   0          15m
 ```
 This output makes sense because we're asking for pods that **only** have the labels, `type=example_code` and `color=green`.
 
-**Step 9:** Now it's time to bind the pods to some services. First, let's take a look at the contents of the first service as defined
+**Step 10:** Now it's time to bind the pods to some services. First, let's take a look at the contents of the first service as defined
 in the yaml file, `service_01.yaml`.
 
 `cat service_01.yaml`
@@ -191,7 +191,7 @@ spec:
 Notice that the service, which happens to be named, ` echocolor-all` is going to bind to any pod that has a label  of `type: example_code`.
 (This is defined in the `selector` section of yaml file.)
 
-**Step 10:** Create the service by applying the manifest file, `service_01.yaml`, like so:
+**Step 11:** Create the service by applying the manifest file, `service_01.yaml`, like so:
 
 `kubectl apply -f service_01.yaml`
 
@@ -199,7 +199,7 @@ You'll get the following output:
 
 `service/echocolor-all created`
 
-**Step 11:** Let's take a look at the second service, as defined in the file, `service_02.yaml`.
+**Step 12:** Let's take a look at the second service, as defined in the file, `service_02.yaml`.
 
 `cat service_02.yaml`
 
@@ -224,7 +224,7 @@ spec:
 Notice that this service will bind to pods that have **both** the labels. `type: example_code` and `color: red`. This is an important
 distinction.
 
-**Step 11:** Create the service by applying the manifest file, `service_02.yaml`, like so:
+**Step 13:** Create the service by applying the manifest file, `service_02.yaml`, like so:
 
 `kubectl apply -f service_02.yaml`
 
@@ -232,7 +232,7 @@ You'll get the following output:
 
 `service/echocolor-red created`
 
-**Step 11:** Finally, let's create the third service. But before we do, let's look at the content of the manifest file, `service_03.yaml`.
+**Step 14:** Finally, let's create the third service. But before we do, let's look at the content of the manifest file, `service_03.yaml`.
 
 `cat service_03.yaml`
 
@@ -258,7 +258,7 @@ spec:
 Notice that this third service will bind to pods that have **both** the labels. `type: example_code` and `color: green`. This is another
  important distinction.
  
-**Step 12:** Create the third service by applying the manifest file, `service_03.yaml`, like so:
+**Step 15:** Create the third service by applying the manifest file, `service_03.yaml`, like so:
 
 `kubectl apply -f service_03.yaml`
 
@@ -266,7 +266,7 @@ You get output as follows:
 
 `service/echocolor-green created`
 
-**Step 12:** Let's a listing of the services that have the name, `echocolor-all`:
+**Step 16:** Let's a listing of the services that have the name, `echocolor-all`:
 
 `kubectl get services  --all-namespaces --field-selector metadata.name=echocolor-all`
 
@@ -279,7 +279,7 @@ default     echocolor-all   NodePort   10.101.94.70   <none>        3000:30671/T
 Take notice of the NodePort that exposes the service. In this case the NodePort is `30671`. It most probably will be different for
 your sessions.
 
-**Step 12:** Let's call the service named `echocolor-all` ten times using the code shown below.
+**Step 17:** Let's call the service named `echocolor-all` ten times using the code shown below.
 
 First let's get the IP address of the Kubernetes cluster running under Katacoda.
 
@@ -341,7 +341,7 @@ You get output similar to the following:
 Notice that both the pods for the `red` deployment and `green` deployment are being called. This makes sense it the service, `echocolor-all`
 is bond to any pods have has the label, ` type: example_code`.
 
-**Step 13:** Let's a listing of the services that have the name, `echocolor-red`: 
+**Step 18:** Let's a listing of the services that have the name, `echocolor-red`: 
 
 `kubectl get services  --all-namespaces --field-selector metadata.name=echocolor-red`
 
@@ -353,7 +353,7 @@ default     echocolor-red   NodePort   10.96.86.130   <none>        3000:32337/T
 ```
 Take notice of NodePort that exposes the service. In this case it's `32337`.
 
-Now let's make ten calls the service using `curl`. (**Remember!** We discovered the IP address of the cluster above in **Step: 13**. )
+Now let's make ten calls the service using `curl`. (**Remember!** We discovered the IP address of the cluster above in **Step: 17**. )
 
 `for i in {1..10}; do curl <IP_OF_CLUSTER>:<NODE_PORT>; done`
 
@@ -399,7 +399,7 @@ You'll get output similar to the following:
 This make sense because the service named, `echocolor-red`  is bound to pods that have **both** the labels, `type: example_code` and
 `color:red`.
 
-**Step 14:** Let's do the `green` service. First find the NodePort of the service:
+**Step 19:** Let's do the `green` service. First find the NodePort of the service:
 
 `kubectl get services  --all-namespaces --field-selector metadata.name=echocolor-green`
 
@@ -409,7 +409,7 @@ You'll get output similar the following:
 NAMESPACE   NAME              TYPE       CLUSTER-IP     EXTERNAL-IP   PORT(S)          AGE
 default     echocolor-green   NodePort   10.108.83.68   <none>        3000:31298/TCP   25m
 ```
-Now, run against the service ten times using the format we've describe before.
+Now, run against the service ten times using the format we've described before.
 
 `for i in {1..10}; do curl localhost:<NODE_PORT>; done`
 
@@ -455,7 +455,7 @@ With output as follows:
 Again, this make sense because the service named, `echocolor-green`  is bound to pods that have **both** the labels, `type: example_code` and
 `color:green`.
 
-**Step 15:** At this point we have both the `red` and `green` pods running under the service named, `echocolor-all`. Now, let's suppose
+**Step 20:** At this point we have both the `red` and `green` pods running under the service named, `echocolor-all`. Now, let's suppose
 that the `green` pods, the ones with the label, `color:green` contain the new code we're testing out in a "Canary" fashion. Let's say
 that the `green` pods are running to our expectation and that we want to take the `red` pods offline for the service, `echocolor-all`.
 
@@ -472,7 +472,7 @@ You'll get the following output:
 The service, `echocolor-all` will now only use the `green` pods. **Remember!** The service named, `echocolor-all` is bound to **any**
 pod that has the label, `type: example_code`. The pods in the deployment, `deployment-green` do indeed have the label,  `type: example_code`
 
-**Step 15:** Run the `for` loop against the service, `echocolor-all` again.
+**Step 21:** Run the `for` loop against the service, `echocolor-all` again.
 
 Get the NodePort:
 
