@@ -5,7 +5,7 @@ The purpose of this exercise is to demonstrate how to use Kubernetes/Istio resou
 This exercise assumes that you have a publicly accessible Kubernetes Cluster up and running and
 that [Istio](https://istio.io/docs/concepts/what-is-istio/) running is the cluster.
 
-**Steo 1:** Make Isito restrict all outbuond traffic, except for URLS and port explicitily declaried
+**Steo 1:** Make Isito restrict all outbuond traffic, except for URLs and ports explicitily declaried
 
 `kubectl get configmap istio -n istio-system -o yaml | sed 's/mode: ALLOW_ANY/mode: REGISTRY_ONLY/g' | kubectl replace -n istio-system -f -`
 
