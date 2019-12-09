@@ -12,7 +12,7 @@ clone the source code repository:
 **Step 3:** Navigate to the directory that contains the source code for this
 lab.
 
-`cd cd k8sdemos/secrets/`
+`cd k8sdemos/secrets/`
 
 
 **Step 4:** Look at the secret to get familiar with it:
