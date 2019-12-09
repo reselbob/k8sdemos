@@ -5,43 +5,47 @@ The purpose of this exercise is to demonstrate how to use Kubernetes/Istio resou
 This exercise assumes that you have a publicly accessible Kubernetes Cluster up and running and
 that [Istio](https://istio.io/docs/concepts/what-is-istio/) running is the cluster.
 
-**Step 1:** `ssh` into or access a command line shell into a environment that has access to your Kubernetes
+**Steo 1:** Make Isito restrict all outbuond traffic, except for URLS and port explicitily declaried
+
+`kubectl get configmap istio -n istio-system -o yaml | sed 's/mode: ALLOW_ANY/mode: REGISTRY_ONLY/g' | kubectl replace -n istio-system -f -`
+
+**Step 2:** `ssh` into or access a command line shell into a environment that has access to your Kubernetes
 cluster.
 
-**Step 2:** Clone the source code for this exercise into the environment
+**Step 3:** Clone the source code for this exercise into the environment
 
 `git clone https://github.com/reselbob/k8sdemos.git` 
 
-**Step 3:** Navigate to the directory that has the source code for this exercise.
+**Step 4:** Navigate to the directory that has the source code for this exercise.
 
 `cd k8sdemos/service-mesh`
 
-**Step 4:** To configure Istio to inject a sidecar when created in the `default` namespace,
+**Step 5:** To configure Istio to inject a sidecar when created in the `default` namespace,
 execute the following command:
 
 `kubectl label namespace default istio-injection=enabled`
 
-**Step 5:** Install Istio-ized Multi-deployment Application. To create the deployments for the Istio-ized Multi-deployment Application, execute
+**Step 6:** Install Istio-ized Multi-deployment Application. To create the deployments for the Istio-ized Multi-deployment Application, execute
 the following command
 
 `kubectl apply -f manifests/deployments.yaml`
 
-**Step 6:** To create the services for the Istio-ized Multi-deployment Application, execute
+**Step 7:** To create the services for the Istio-ized Multi-deployment Application, execute
 the following command
 
 `kubectl apply -f manifests/services.yaml`
 
-**Step 7:** Allow Access to the Istio-ized Multi-deployment Application. Find the IP address of `istio-ingressgateway`.
+**Step 8:** Allow Access to the Istio-ized Multi-deployment Application. Find the IP address of `istio-ingressgateway`.
 
 `kubectl get svc -n istio-system | grep istio-ingressgateway`
 
 Save the pubic IP address of `istio-ingressgateway`. You'll need it
 
-**Step 8:** Enter the public IP address of `istio-ingressgateway` into the address bar of your computer's browser.
+**Step 9:** Enter the public IP address of `istio-ingressgateway` into the address bar of your computer's browser.
 
 You should get an error, an "Unable to find web site" error.
 
-**Step 9:** Bind the ingress rule to Istio to allow access to the application.
+**Step 10:** Bind the ingress rule to Istio to allow access to the application.
 
 `kubectl apply -f manifests/ingress.yaml`
 
@@ -53,7 +57,7 @@ http://business/ -> business-prod - 0.12secs
 http://worldclockapi.com/api/json/utc/now -> StatusCodeError: 404 - ""
 ```
 
-**Step 10:**  Apply the egress to allow access to `worldclockapi.com`.
+**Step 11:**  Apply the egress to allow access to `worldclockapi.com`.
 
 `kubectl apply -f manifests/egress.yaml`
 
