@@ -44,7 +44,7 @@ kind: Deployment
 metadata:
   name: deployment-red
 spec:
-  replicas: 3
+  replicas: 10
   strategy:
     type: RollingUpdate
     rollingUpdate:
