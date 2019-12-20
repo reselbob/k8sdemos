@@ -53,7 +53,7 @@ spec:
   template:
     metadata:
       labels:
-        type: example_code
+        app: example_code
         color: red
     spec:
       containers:
@@ -102,7 +102,7 @@ spec:
   template:
     metadata:
       labels:
-        type: example_code
+        app: example_code
         color: green
     spec:
       containers:
@@ -123,7 +123,7 @@ These labels distinction are very important in terms of controlling the Canary D
 
 **Step 7:** Let's retrieve a list of pods according to the label, `type=example_code`.
 
-`kubectl get pods -l type=example_code`
+`kubectl get pods -l app=example_code`
 
 You get output as follows:
 ```text
@@ -136,11 +136,11 @@ deployment-red-76fccf6fd7-fd782     1/1     Running   0          11m
 deployment-red-76fccf6fd7-zw5lz     1/1     Running   0          11m
 ```
 Notice that both the pods created by the `deployment-red.yaml` and `deployment-green.yaml` manifests are 
-returned. This is because we're looking for **any** pod that has the label, `type=example_code`.
+returned. This is because we're looking for **any** pod that has the label, `app=example_code`.
 
 **Step 8:** Now let's retrieve only the pods that have both the labels, `type=example_code` and `color=red`.
 
-`kubectl get pods -l type=example_code  -l color=red`
+`kubectl get pods -l app=example_code  -l color=red`
 
 You'll get the following output:
 
@@ -150,11 +150,11 @@ deployment-red-76fccf6fd7-6fkth   1/1     Running   0          14m
 deployment-red-76fccf6fd7-fd782   1/1     Running   0          14m
 deployment-red-76fccf6fd7-zw5lz   1/1     Running   0          14m
 ```
-The output makes sense because we're asking for pods that **only** have the labels, `type=example_code` and `color=red`.
+The output makes sense because we're asking for pods that **only** have the labels, `app=example_code` and `color=red`.
 
 **Step 9:** Let's retrieve only the pods that have both the labels, `type=example_code` and `color=green`.
 
-`kubectl get pods -l type=example_code  -l color=green`
+`kubectl get pods -l app=example_code  -l color=green`
 
 You'll get the following output:
 
@@ -164,7 +164,7 @@ deployment-green-84887f8cf5-d8lcl   1/1     Running   0          15m
 deployment-green-84887f8cf5-f6ngn   1/1     Running   0          15m
 deployment-green-84887f8cf5-lqlwz   1/1     Running   0          15m
 ```
-This output makes sense because we're asking for pods that **only** have the labels, `type=example_code` and `color=green`.
+This output makes sense because we're asking for pods that **only** have the labels, `app=example_code` and `color=green`.
 
 **Step 10:** Now it's time to bind the pods to some services. First, let's take a look at the contents of the first service as defined
 in the yaml file, `service_01.yaml`.
@@ -180,7 +180,7 @@ metadata:
   name: echocolor-all
 spec:
   selector:
-    type: example_code
+    app: example_code
   ports:
   -
     protocol: TCP
@@ -212,7 +212,7 @@ metadata:
   name: echocolor-red
 spec:
   selector:
-    type: example_code
+    app: example_code
     color: red
   ports:
   -
@@ -245,7 +245,7 @@ metadata:
   name: echocolor-green
 spec:
   selector:
-    type: example_code
+    app: example_code
     color: green
   ports:
   -
