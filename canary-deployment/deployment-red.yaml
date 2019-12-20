@@ -12,7 +12,7 @@ spec:
   template:
     metadata:
       labels:
-        type: example_code
+        app: example_code
         color: red
     spec:
       containers:
