@@ -304,10 +304,6 @@ Now the service, `echocolor` is bound to `green` pods.
 
 **Step 12:** Run the calls using the `curl` command again:
 
-`for i in {1..10}; do curl localhost:<NODE_PORT>; done`
-
-In the case of this Katacoda session the call will be:
-
 `for i in {1..10}; do curl <IP_OF_CLUSTER>:<NODE_PORT>; done`
 
 ```json
