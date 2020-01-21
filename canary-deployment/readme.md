@@ -125,15 +125,22 @@ These labels distinction are very important in terms of controlling the Canary D
 
 `kubectl get pods -l app=example_code`
 
-You get output as follows:
+You get output similar to the following:
 ```text
 NAME                                READY   STATUS    RESTARTS   AGE
-deployment-green-84887f8cf5-d8lcl   1/1     Running   0          10m
-deployment-green-84887f8cf5-f6ngn   1/1     Running   0          10m
-deployment-green-84887f8cf5-lqlwz   1/1     Running   0          10m
-deployment-red-76fccf6fd7-6fkth     1/1     Running   0          11m
-deployment-red-76fccf6fd7-fd782     1/1     Running   0          11m
-deployment-red-76fccf6fd7-zw5lz     1/1     Running   0          11m
+deployment-green-dc8b9759b-7q5bt   1/1     Running   0          55s
+deployment-green-dc8b9759b-dx526   1/1     Running   0          55s
+deployment-green-dc8b9759b-tx5vg   1/1     Running   0          55s
+deployment-red-9865b4c9b-6xbcc     1/1     Running   0          76s
+deployment-red-9865b4c9b-79thh     1/1     Running   0          77s
+deployment-red-9865b4c9b-gs8sz     1/1     Running   0          76s
+deployment-red-9865b4c9b-kcr8d     1/1     Running   0          76s
+deployment-red-9865b4c9b-p7mdq     1/1     Running   0          76s
+deployment-red-9865b4c9b-q8644     1/1     Running   0          76s
+deployment-red-9865b4c9b-v9snr     1/1     Running   0          76s
+deployment-red-9865b4c9b-wvg7n     1/1     Running   0          76s
+deployment-red-9865b4c9b-zb8kk     1/1     Running   0          76s
+deployment-red-9865b4c9b-zvl2l     1/1     Running   0          76s
 ```
 Notice that both the pods created by the `deployment-red.yaml` and `deployment-green.yaml` manifests are 
 returned. This is because we're looking for **any** pod that has the label, `app=example_code`.
