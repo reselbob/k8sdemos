@@ -23,9 +23,17 @@ Navigate to the directory that contains the lesson code
 
 `sh install-operator.sh`
 
+Create an instance of Jaeger in the cluster
+
+`kubectl apply -f jaeger-rod.yaml`
+
+Make sure all is well
+
+`kubectl get all -n observability`
+
 ## Subjecting the HotRod Web Application to OpenTelemetry Monitoring 
 
-Create Hotrod under Kubernetes
+Create Hotrod under Kubernetes that's wired to Jaeger
 
 `kubectl apply -f hotrod-k8s.yaml`
 
