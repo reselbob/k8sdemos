@@ -1,18 +1,42 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: hotrod
+  namespace: observability
+spec:
+  selector:
+    app: hotrod
+  ports:
+    - protocol: TCP
+      port: 8080
+      targetPort: 8080
+  type: NodePort
+
+---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: myapp
   annotations:
-    "sidecar.jaegertracing.io/inject": "true" # <1>
+    sidecar.jaegertracing.io/inject: "true"
+  labels:
+    app: hotrod
+  name: hotrod
+  namespace: observability
 spec:
   selector:
     matchLabels:
-      app: myapp
+      app: hotrod
+  replicas: 1
   template:
     metadata:
       labels:
-        app: myapp
+        app: hotrod
     spec:
       containers:
-      - name: myapp
-        image: acme/myapp:myversion
+        - name: hotrod
+          image: jaegertracing/example-hotrod:latest
+          args:
+            - all
+          ports:
+            - containerPort: 8080
+              name: ui
