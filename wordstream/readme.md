@@ -106,7 +106,7 @@ If you want to experiment, go into the file, [kubernetes/manifests/wordstream-de
 and scale up number of pods running in the wordstream-consumer deployment to 10 by modifying the manifest like so:
 
 ```yaml
-apiVersion: extensions/v1beta1
+apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: wordstream-consumer

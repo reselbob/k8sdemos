@@ -1,5 +1,5 @@
 ---
-apiVersion: extensions/v1beta1
+apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: wordstream-producer
@@ -32,7 +32,7 @@ spec:
         image: busybox:1.31
         command: ['sh', '-c', 'until nslookup redis-master; do echo waiting for redis-master; sleep 2; done;']
 ---
-apiVersion: extensions/v1beta1
+apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: wordstream-consumer

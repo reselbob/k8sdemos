@@ -39,7 +39,7 @@ deployment declaration. First let's take a look at the contents of the yaml file
 You'll get the following output:
 
 ```yaml
-apiVersion: extensions/v1beta1
+apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: deployment-red
@@ -88,7 +88,7 @@ Let take a look at the deployment file, `deployment-green.yaml`.
 You'll get output as follows:
 
 ```yaml
-apiVersion: extensions/v1beta1
+apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: deployment-green
@@ -295,7 +295,13 @@ your sessions.
 
 **Step 17:** Let's call the service named `echocolor-all` ten times using the code shown below.
 
-First let's get the IP address of the Kubernetes cluster running under Katacoda.
+First, turn on the Kubernetes proxy to expose the cluster IP and node port to the local machine.
+
+in a separate terminal window type:
+
+`kubectl proxy`
+
+Then return to the first terminal window to get the IP address of the Kubernetes cluster running under Katacoda.
 
 `kubectl cluster-info`
 

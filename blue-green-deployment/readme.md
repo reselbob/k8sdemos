@@ -24,7 +24,7 @@ Take a look at the contents of the manifest file:
 `cat deployment-blue.yaml`
 
 ```yaml
-apiVersion: extensions/v1beta1
+apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: deployment-blue
@@ -198,7 +198,7 @@ Now create the service by executing the following command:
 
 `kubectl apply -f service_blue.yaml`
 
-You'get
+You'll get:
 
 `service/echocolor created`
 
@@ -221,6 +221,10 @@ Get the NodePort of the service:
 NAMESPACE   NAME        TYPE       CLUSTER-IP       EXTERNAL-IP   PORT(S)          AGE
 default     echocolor   NodePort   10.100.199.225   <none>        3000:30571/TCP   34s
 ```
+
+In a separate terminal window, turn on the Kubernetes proxy to expose the cluster IP and node port local machine
+
+`kubectl proxy`
 
 Now run a `curl` command ten times against the service to inspect the behavior.
 

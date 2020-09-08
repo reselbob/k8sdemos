@@ -12,7 +12,7 @@ The steps that follow will implement a Kubernetes Ingress as defined in the foll
 manifest.
 
 ```yaml
-apiVersion: extensions/v1beta1
+apiVersion: apps/v1
 kind: Ingress
 metadata:
   name: stooges-ingress
