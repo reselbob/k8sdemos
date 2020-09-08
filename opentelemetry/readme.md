@@ -25,14 +25,25 @@ Navigate to the directory that contains the lesson code
 
 ## Subjecting the HotRod Web Application to OpenTelemetry Monitoring 
 
-Get the HotRod Code
+Create Hotrod under Kubernetes
 
-`git clone https://github.com/jaegertracing/jaeger.git`
+`kubectl apply -f hotrod-k8s.yaml`
 
-`cd jaeger/examples`
+Take a look at everything to make sure all is well
 
-### Configure HotRod
+`kubectl get all -n observability`
+
+Turn on the Kubernetes proxy is you are running in Katacoda
+
+`kubectl proxy`
+
+Get the value of the NodePort that HotRod is running against
+
+`kubectl get service -n observability`
+
 
 ### Running the Web App
+
+Run the HotRod website using the NodePort value
 
 ### Viewing Trace Behavior in Jaeger UI
