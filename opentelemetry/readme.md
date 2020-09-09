@@ -9,6 +9,16 @@ The objective of this scenario is to demonstrate how to use OpenTelementry to tr
 
 `https://katacoda.com/courses/kubernetes/playground`
 
+## Adding the Ingress Controller
+
+You're going to need a K8S Ingress controller to access the Jaeger UI that's running under K8S. Let's use [Contour](https://projectcontour.io/getting-started/);
+
+`kubectl apply -f https://projectcontour.io/quickstart/contour.yaml`
+
+Confirm the ingress controller. works
+
+`kubectl apply -f https://projectcontour.io/examples/kuard.yaml`
+
 ## Getting the Code
 
 Clone the code from GitHub
