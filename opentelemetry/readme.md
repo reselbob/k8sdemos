@@ -15,6 +15,10 @@ You're going to need a K8S Ingress controller to access the Jaeger UI that's run
 
 `kubectl apply -f https://projectcontour.io/quickstart/contour.yaml`
 
+Take a look at contour to get the NodePort values.
+
+`kubectl get -n projectcontour service envoy -o wide`
+
 Confirm the ingress controller. works
 
 `kubectl apply -f https://projectcontour.io/examples/kuard.yaml`
