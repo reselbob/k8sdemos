@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: figgy-config
+  namespace: default
+data:
+  image.auto: nginx
+  image.airline: nginx
+  image.hotel: nginx
+  image.agent: nginx
+  image.user: nginx

@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: figgynginx
+  labels:
+    pinger: demo
+spec:
+  containers:
+  - image:
+    valueFrom:
+      configMapKeyRef:
+          name: figgy-config
+          key: image.auto
+    name: figgynginx
+    ports:
+    - containerPort: 80
